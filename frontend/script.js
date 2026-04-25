@@ -7,7 +7,7 @@ async function fetchProjects() {
   container.innerHTML = '<p class="loading-text">Loading projects...</p>';
 
   try {
-    const response = await fetch('http://localhost:5000/api/projects');
+    const response = await fetch('https://portfolio-ynf1.onrender.com');
     const projects = await response.json();
 
     if (projects.length === 0) {
@@ -54,7 +54,7 @@ async function addProject() {
   }
 
   try {
-    const response = await fetch('http://localhost:5000/api/projects', {
+    const response = await fetch('https://portfolio-ynf1.onrender.com', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title, description, githubLink, techStack })
