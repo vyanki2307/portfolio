@@ -1,0 +1,41 @@
+# Portfolio Project
+
+## 📌 Description
+
+This is a full-stack portfolio website where users can:
+
+* View projects
+* Add new projects
+* Store project data using backend API
+
+## 🛠 Tech Stack
+
+* Frontend: HTML, CSS, JavaScript
+* Backend: Node.js, Express
+
+## 🚀 How to Run
+
+### 1. Clone repo
+
+git clone https://github.com/YOUR_USERNAME/portfolio-project.git
+
+### 2. Go to backend
+
+cd backend
+
+### 3. Install dependencies
+
+npm install
+
+### 4. Run server
+
+node server.js
+
+### 5. Open frontend
+
+Open frontend/index.html in browser
+
+## ⚠️ Note
+
+Make sure backend is running on:
+http://localhost:5000
