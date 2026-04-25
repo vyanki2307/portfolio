@@ -1,13 +1,11 @@
-
 document.addEventListener('DOMContentLoaded', fetchProjects);
-
 
 async function fetchProjects() {
   const container = document.getElementById('projects-container');
   container.innerHTML = '<p class="loading-text">Loading projects...</p>';
 
   try {
-    const response = await fetch('https://portfolio-ynf1.onrender.com');
+    const response = await fetch('https://portfolio-ynf1.onrender.com/api/projects');
     const projects = await response.json();
 
     if (projects.length === 0) {
@@ -18,7 +16,7 @@ async function fetchProjects() {
     container.innerHTML = '';
     projects.forEach(project => {
       const techTags = project.techStack
-        ? project.techStack.split(',').map(t => 
+        ? project.techStack.split(',').map(t =>
             `<span class="tech-tag">${t.trim()}</span>`
           ).join('')
         : '';
@@ -39,7 +37,6 @@ async function fetchProjects() {
   }
 }
 
-
 async function addProject() {
   const title       = document.getElementById('title').value.trim();
   const description = document.getElementById('description').value.trim();
@@ -54,7 +51,7 @@ async function addProject() {
   }
 
   try {
-    const response = await fetch('https://portfolio-ynf1.onrender.com', {
+    const response = await fetch('https://portfolio-ynf1.onrender.com/api/projects', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title, description, githubLink, techStack })
@@ -65,12 +62,11 @@ async function addProject() {
     message.style.color = '#00cc88';
     message.textContent = 'Project added successfully!';
 
-       document.getElementById('title').value       = '';
+    document.getElementById('title').value       = '';
     document.getElementById('description').value = '';
     document.getElementById('githubLink').value  = '';
     document.getElementById('techStack').value   = '';
 
-    
     fetchProjects();
 
   } catch (error) {
