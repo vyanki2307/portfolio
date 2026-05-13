@@ -3,7 +3,9 @@ const cors     = require('cors');
 const mongoose = require('mongoose');
 const app      = express();
 
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 app.use(express.json());
 
 const MONGO_URI = 'mongodb+srv://vyankateshc94_db_user:mypass123@cluster0.bib5kwa.mongodb.net/portfolio?appName=Cluster0';
