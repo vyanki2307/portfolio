@@ -20,8 +20,10 @@ const projectSchema = new mongoose.Schema({
   description: { type: String, required: true },
   githubLink:  { type: String },
   techStack:   { type: String },
+  liveLink:    { type: String },
   createdAt:   { type: Date, default: Date.now }
 });
+
 
 const Project = mongoose.model('Project', projectSchema);
 

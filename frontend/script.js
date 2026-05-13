@@ -22,13 +22,16 @@ async function fetchProjects() {
         : '';
 
       container.innerHTML += `
-        <div class="project-card">
-          <h3>${project.title}</h3>
-          <p>${project.description}</p>
-          <div class="tech-tags">${techTags}</div>
-          <a href="${project.githubLink}" target="_blank">View on GitHub →</a>
-        </div>
-      `;
+  <div class="project-card">
+    <h3>${project.title}</h3>
+    <p>${project.description}</p>
+    <div class="tech-tags">${techTags}</div>
+    <div class="card-links">
+      <a href="${project.githubLink}" target="_blank">GitHub →</a>
+      <a href="${project.liveLink}" target="_blank">Live Site →</a>
+    </div>
+  </div>  
+`;
     });
 
   } catch (error) {
@@ -54,7 +57,8 @@ async function addProject() {
     const response = await fetch('https://portfolio-ynf1.onrender.com/api/projects', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title, description, githubLink, techStack })
+     const liveLink = document.getElementById('liveLink').value.trim();
+body: JSON.stringify({ title, description, githubLink, liveLink, techStack })
     });
 
     const data = await response.json();

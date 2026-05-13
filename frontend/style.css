@@ -240,3 +240,24 @@ footer {
   font-size: 14px;
   border-top: 1px solid #2a2a2a;
 }
+.card-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.card-links a {
+  color: #7c6fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #7c6fff;
+  padding: 4px 12px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.card-links a:hover {
+  background: #7c6fff;
+  color: white;
+}
