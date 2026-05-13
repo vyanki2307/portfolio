@@ -22,20 +22,20 @@ async function fetchProjects() {
         : '';
 
       container.innerHTML += `
-  <div class="project-card">
-    <h3>${project.title}</h3>
-    <p>${project.description}</p>
-    <div class="tech-tags">${techTags}</div>
-    <div class="card-links">
-      <a href="${project.githubLink}" target="_blank">GitHub →</a>
-      <a href="${project.liveLink}" target="_blank">Live Site →</a>
-    </div>
-  </div>  
-`;
+        <div class="project-card">
+          <h3>${project.title}</h3>
+          <p>${project.description}</p>
+          <div class="tech-tags">${techTags}</div>
+          <div class="card-links">
+            <a href="${project.githubLink}" target="_blank">GitHub →</a>
+            ${project.liveLink ? `<a href="${project.liveLink}" target="_blank">Live Site →</a>` : ''}
+          </div>
+        </div>
+      `;
     });
 
   } catch (error) {
-    container.innerHTML = '<p class="loading-text">Could not connect to server. Make sure node server.js is running.</p>';
+    container.innerHTML = '<p class="loading-text">Could not connect to server.</p>';
     console.error('Fetch error:', error);
   }
 }
@@ -44,6 +44,7 @@ async function addProject() {
   const title       = document.getElementById('title').value.trim();
   const description = document.getElementById('description').value.trim();
   const githubLink  = document.getElementById('githubLink').value.trim();
+  const liveLink    = document.getElementById('liveLink').value.trim();
   const techStack   = document.getElementById('techStack').value.trim();
   const message     = document.getElementById('form-message');
 
@@ -57,8 +58,7 @@ async function addProject() {
     const response = await fetch('https://portfolio-ynf1.onrender.com/api/projects', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-     const liveLink = document.getElementById('liveLink').value.trim();
-body: JSON.stringify({ title, description, githubLink, liveLink, techStack })
+      body: JSON.stringify({ title, description, githubLink, liveLink, techStack })
     });
 
     const data = await response.json();
@@ -69,6 +69,7 @@ body: JSON.stringify({ title, description, githubLink, liveLink, techStack })
     document.getElementById('title').value       = '';
     document.getElementById('description').value = '';
     document.getElementById('githubLink').value  = '';
+    document.getElementById('liveLink').value    = '';
     document.getElementById('techStack').value   = '';
 
     fetchProjects();
